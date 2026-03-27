@@ -1,0 +1,160 @@
+<style>
+    body {
+      background: #636161;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* HEADER WITH LOGO */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .header img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+    
+    .header h1 {
+      color: #fff;
+      font-weight: bolder;
+      text-decoration: underline;
+      margin: 0;
+    }
+    
+    /* CONTAINER */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px;
+    }
+    
+    /* CARD */
+    .card {
+      width: 300px;
+      background: #111;
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+      transition: 0.4s;
+      animation: breathe 3s infinite ease-in-out;
+      cursor: pointer;
+    }
+    
+    .card:hover {
+      transform: scale(1.05);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 15px;
+      padding: 2px;
+      background: linear-gradient(45deg, #00f, #0ff, #0f0, #ff0, #f00);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity: 0;
+      transition: 0.4s;
+    }
+    
+    .card:hover::before {
+      opacity: 1;
+    }
+    
+    /* IMAGE */
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    /* TEXT */
+    .card h3 {
+      padding: 15px;
+    }
+    
+    /* BUTTON */
+    .card button {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #fff;
+      color: #000;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .card button:hover {
+      background: #0ff;
+    }
+    
+    /* ANIMATION */
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    </style>
+    
+    <!-- HEADER -->
+    <div class="header">
+      <img src="download (1).jpeg" alt="Mikochart Logo">
+      <h1>Welcome To Mikochart Business Centre</h1>
+    </div>
+    
+    <div class="container">
+    
+      <!-- CARD 1 -->
+      <div class="card" onclick="stopAnimation(this)">
+        <img src="drive.jpg" alt="Drive">
+        <h3>Drive to Mikochart School</h3>
+        <button onclick="openMap(event)">Drive</button>
+      </div>
+    
+      <!-- CARD 2 -->
+      <div class="card" onclick="stopAnimation(this)">
+        <img src="business.jpg" alt="Explore">
+        <h3>Explore More Mikochart School's Business</h3>
+        <button onclick="goToContact(event)">Explore Now</button>
+      </div>
+    
+      <!-- CARD 3 -->
+      <div class="card" onclick="stopAnimation(this)">
+        <img src="staff.jpg" alt="Staff">
+        <h3>Meet Our Staffs Around The World</h3>
+        <button onclick="openStaff(event)">Meet Staff</button>
+      </div>
+    
+    </div>
+    
+    <script>
+    function stopAnimation(card) {
+      card.style.animation = "none";
+    }
+    
+    function openMap(e) {
+      e.stopPropagation();
+      window.open("https://www.google.com/maps/search/?api=1&query=157,+Governors+Road,+Ikotun,+Lagos+State,+Nigeria", "_blank");
+    }
+    
+    /* REDIRECT TO CONTACT PAGE */
+    function goToContact(e) {
+      e.stopPropagation();
+      window.location.href = "/contact"; // CHANGE if your page slug is different
+    }
+    
+    function openStaff(e) {
+      e.stopPropagation();
+      window.location.href = "/staffs";
+    }
+    </script>
